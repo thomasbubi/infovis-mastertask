@@ -1,3 +1,10 @@
+var dataColors = [
+    '#f6cf71',
+    '#9eb9f3',
+    '#86c45e',
+    '#f89c74'
+];
+
 var data = {
     evidenceSet1: {
         basalBodyTemperature: {
@@ -12,12 +19,12 @@ var data = {
             s4:32.7,
             globalRelevance: 0
         },
-        phase: {
-            menstruation: 52.5,
-            follicular: 42.5,
-            ovulation: 5,
-            luteal: 0
-        },
+        phase: [
+            { label: 'menstruation', value: 52.5 },
+            { label: 'follicular', value: 42.5 },
+            { label: 'ovulation', value: 5 },
+            { label: 'luteal', value: 0 }
+        ],
         bleeding: {
             yes: 52.5,
             no: 47.5
@@ -43,5 +50,3 @@ var data = {
         
     },*/
 };
-
-console.log(data)
