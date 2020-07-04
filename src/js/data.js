@@ -7,28 +7,28 @@ var dataColors = [
 
 var data = {
     evidenceSet1: {
-        basalBodyTemperature: {
-            lowerRange: 100,
-            higherRange: 0,
-            globalRelevance: 100
-        },
-        mucus: {
-            s1: 57.5,
-            s2:7.3,
-            s3:2.5,
-            s4:32.7,
-            globalRelevance: 0
-        },
+        basalBodyTemperature: [
+            { label: 'lowerRange', value: 100,},
+            { label: 'higherRange', value: 0,},
+            { label: 'globalRelevance', value: 100},
+        ],
+        mucus: [
+            { label: 's1', value: 57.5 },
+            { label: 's2', value: 7.3 },
+            { label: 's3', value: 2.5 },
+            { label: 's4', value: 32.7 },
+            //{ label: 'globalRelevance', value: 0 }
+        ],
         phase: [
             { label: 'menstruation', value: 52.5 },
             { label: 'follicular', value: 42.5 },
             { label: 'ovulation', value: 5 },
             { label: 'luteal', value: 0 }
         ],
-        bleeding: {
-            yes: 52.5,
-            no: 47.5
-        },
+        bleeding: [
+            { label: 'yes', value: 52.5,},
+            { label: 'no', value: 47.5},
+        ],
         localRelevance: [//is an array because some evidence sets have multiple assignments
             [
                 //{ label:'type', value: 'Basal Body Temperature' },
