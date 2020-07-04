@@ -25,9 +25,10 @@ data.evidenceSet1.localRelevance[0].filter(
 )
 */
 
-createBar(
+createBarVertical(
     data.evidenceSet1.mucus.map(function(d) { return d.value; }),
     data.evidenceSet1.mucus.map(function(d) { return d.label; }),
     500,
-    350
+    500,
+    50,
 );

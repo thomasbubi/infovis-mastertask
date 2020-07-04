@@ -104,25 +104,25 @@ function createDivergingBar( barData , width, height, yAxisOffsetY, barWidth) {
         .attr( 'height', function( d, i ) { return Math.abs( scale( d ) ); });
 }
 
-//TODO cleanup code
-function createBar( barData, labelData, width, height ){
+function createBarHorizontal( barData, labelData, width, height, barThickness ){
+    var margin = 5;
+    var barThicknessWithMargin = barThickness + 2*margin;
     var barSvg = d3.select( 'body' ).append( 'svg' );
     barSvg.attr( 'width', width ).attr( 'height', height );
     
     var scale = d3.scaleLinear()
-        .domain( [ d3.min(barData), d3.max(barData) ] )
+        .domain( [0, d3.max(barData) ] )
         .range( [ 0, width ] );
     
     var labelScale = d3.scaleBand()
-        .range( [0, 60*4 ] )
+        .range( [0, barThicknessWithMargin * 4 ] )
         .domain(labelData);
     
     var yAxis = d3.axisLeft()
-            .scale( labelScale );
-    
+        .scale( labelScale );
     var xAxis = d3.axisBottom()
         .scale( scale );
-    
+
     barSvg.append( 'g' )
        .attr( 'transform', 'translate(30, ' + 250 + ')')
        .call( xAxis );
@@ -131,7 +131,6 @@ function createBar( barData, labelData, width, height ){
        .attr( 'transform', 'translate(30, ' + 0 + ')')
        .call( yAxis );
     
-    //-----
     barSvg.selectAll( '.bar' )
         .data( barData )
         .enter().append( 'rect' )
@@ -141,8 +140,59 @@ function createBar( barData, labelData, width, height ){
             return 30;
         })
         .attr( 'y', function( d, i ) { 
-            return i * 60
+            return i * barThicknessWithMargin
         })
         .attr( 'width', function( d, i ) { return Math.abs( scale( d ) ); })
-        .attr( 'height', 50);
+        .attr( 'height', barThickness);
+    
+}
+
+function createBarVertical( barData, labelData, width, height, barThickness ){
+    
+    console.log(barData)
+    
+    var margin = 5;
+    var barThicknessWithMargin = barThickness + 2*margin;
+    var barSvg = d3.select( 'body' ).append( 'svg' );
+    barSvg.attr( 'width', width ).attr( 'height', height );
+    
+    var scale = d3.scaleLinear()
+        .domain( [ 0, d3.max(barData) ] )
+        .range( [ 0, height-50 ] );
+    
+    var scaleInverted = d3.scaleLinear()
+        .domain( [ d3.max(barData), 0 ] )
+        .range( [ 0, height-50 ] );
+    
+    var labelScale = d3.scaleBand()
+        .range( [0, barThicknessWithMargin * 4 ] )
+        .domain(labelData);
+
+    var yAxis = d3.axisLeft()
+        .scale( scaleInverted );
+    var xAxis = d3.axisBottom()
+        .scale( labelScale );
+    
+    barSvg.append( 'g' )
+       .attr( 'transform', 'translate(30, ' + (height - 50) + ')')
+       .call( xAxis );
+    
+    barSvg.append( 'g' )
+       .attr( 'transform', 'translate(30, ' + 0 + ')')
+       .call( yAxis );
+
+    barSvg.selectAll( '.bar' )
+        .data( barData )
+        .enter().append( 'rect' )
+        .attr( 'class', 'bar' )
+        .attr( 'fill', 'green' )
+        .attr( 'x', function( d, i ) { 
+            return i * barThicknessWithMargin  + 35
+        })
+        .attr( 'y', function( d, i ) { 
+            return scaleInverted(0) - scale( d );
+        })
+        .attr( 'width', barThickness)
+        .attr( 'height', function( d, i ) { return scale( d ); });
+
 }
