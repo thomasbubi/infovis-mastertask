@@ -60,3 +60,46 @@ function createPie( pieData, pieLabels, width ){
         } );
     
 }
+
+function createDivergingBar( barData , width, height, yAxisOffsetY, barWidth) {
+    
+    var barSvg = d3.select( 'body' ).append( 'svg' );
+    barSvg.attr( 'width', width ).attr( 'height', height );
+
+    var scale = d3.scaleLinear()
+                .domain( [ d3.min(barData), d3.max(barData) ] )
+                .range( [ -yAxisOffsetY, height-yAxisOffsetY ] );
+
+    var scaleInverted = d3.scaleLinear()
+                .domain( [ d3.max(barData), d3.min( barData ) ] )
+                .range( [ -yAxisOffsetY, height - yAxisOffsetY ] );
+
+    var zeroPos = yAxisOffsetY - ( Math.abs( scaleInverted(0) ) );
+
+    var yAxis = d3.axisLeft()
+                .scale( scaleInverted );
+
+    barSvg.append( 'g' )
+       .attr( 'transform', 'translate(50, ' + yAxisOffsetY + ')')
+       .call( yAxis );
+
+    var xScale = d3.scaleBand().range( [0, width - 100] );
+
+    var marginSides = 5;
+    var barSpace = ( barWidth + 2 * marginSides );
+    var initialOffset = 75
+    
+    barSvg.selectAll( '.bar' )
+        .data( barData )
+        .enter().append( 'rect' )
+        .attr( 'class', 'bar' )
+        .attr( 'fill', function( d,i ){ return dataColors[ i ] } )
+        .attr( 'x', function( d, i ) { 
+            return i * barSpace + initialOffset;
+        })
+        .attr( 'y', function( d, i ) { 
+            return d > 0 ? zeroPos - scale( d ) : zeroPos
+        })
+        .attr( 'width', barWidth)
+        .attr( 'height', function( d, i ) { return Math.abs( scale( d ) ); });
+}

@@ -30,14 +30,17 @@ var data = {
             no: 47.5
         },
         localRelevance: [//is an array because some evidence sets have multiple assignments
-            {
-                type: 'Basal Body Temperature',
-                range: 'lower range',
-                menstruation: 18.63,
-                follicular: 15.08,
-                ovulation: 1.77,
-                luteal: -35.47
-            }
+            [
+                //{ label:'type', value: 'Basal Body Temperature' },
+                //{ label:'range', value: 'lower range' },
+                { label:'menstruation', value: 18.63 },
+                { label:'follicular', value: 15.08 },
+                { label:'ovulation', value: 1.77 },
+                { label:'luteal', value: -35.47 }
+            ]
+        ],
+        localRelevanceTemp: [
+
         ]
     }/*,//just added one for now, so it's less work improving the structure of the objects
     evidenceSet2: {
