@@ -1,0 +1,67 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+
+
+h2 {
+    margin: 25px;
+    margin-bottom: 50px;
+    font-size: 1em;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 400px 100px 400px 400px;
+    grid-gap: 10px;
+    font-family: 'Times New Roman';
+    text-align: center;
+    font-size: 1em;
+    margin: 40px 30px;
+}
+
+.item {
+    padding: 0px;
+    font-size: 1em;
+    border: 0px solid black;
+}
+
+.a {
+    background: transparent;
+    grid-row-start: 1;
+    grid-row-end: 2;
+}
+
+.b {
+    background: transparent;
+    grid-row-start: 1;
+    grid-row-end: 2;
+}
+.c {
+    background: transparent;
+    grid-row-start: 1;
+    grid-row-end: 2;
+}
+.d {
+    background: transparent;
+    grid-row-start: 1;
+    grid-row-end: 2;
+}
+
+#area3 > svg {
+    margin-top: 15px;
+}
+
+#area4 > svg {
+    margin-top: 166px;
+}
+
+.toolTip {
+    position: absolute;
+    display: none;
+    height: auto;
+    padding: 7px;
+    text-align: center;
+    font-size: 0.7em;
+}
