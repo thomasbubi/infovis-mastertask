@@ -1,7 +1,7 @@
-/*createPie( 
+createPie(
     data.evidenceSet1.phase.map(function(d) { return d.value; }),
     data.evidenceSet1.phase.map(function(d) { return d.label; }),
-    500
+    400
 );
 
 createDivergingBar( 
@@ -10,11 +10,11 @@ createDivergingBar(
             return d.value;
         }
     ),
-    500,
-    300,
-    200,
-    40
-);*/
+    250,
+    150,
+    100,
+    20
+);
 
 /*
 //maybe useful later
@@ -25,10 +25,27 @@ data.evidenceSet1.localRelevance[0].filter(
 )
 */
 
-createBarVertical(
+createBarHorizontal(
     data.evidenceSet1.mucus.map(function(d) { return d.value; }),
     data.evidenceSet1.mucus.map(function(d) { return d.label; }),
-    500,
-    500,
-    50,
+    300,
+    200,
+    20,
 );
+
+createBarHorizontal(
+    data.evidenceSet1.basalBodyTemperature.map(function(d) { return d.value; }),
+    data.evidenceSet1.basalBodyTemperature.map(function(d) { return d.label; }),
+    300,
+    140,
+    20,
+);
+
+createBarHorizontal(
+    data.evidenceSet1.bleeding.map(function(d) { return d.value; }),
+    data.evidenceSet1.bleeding.map(function(d) { return d.label; }),
+    300,
+    200,
+    20,
+);
+

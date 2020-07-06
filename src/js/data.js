@@ -8,9 +8,9 @@ var dataColors = [
 var data = {
     evidenceSet1: {
         basalBodyTemperature: [
-            { label: 'lowerRange', value: 100,},
-            { label: 'higherRange', value: 0,},
-            { label: 'globalRelevance', value: 100},
+            { label: 'lower Range', value: 100,},
+            { label: 'higher Range', value: 0,},
+            //{ label: 'globalRelevance', value: 100},
         ],
         mucus: [
             { label: 's1', value: 57.5 },
