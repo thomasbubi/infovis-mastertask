@@ -172,10 +172,21 @@ function createDivergingBar( barData , width, height, yAxisOffsetY, barWidth) {
         .on('mouseover', mouseover)
         .on('mousemove', mousemove)
         .on('mouseout', mouseout);
+    
+        barSvg = d3.select( '#area4' ).append ('h2')
+	.text('Local relevance for computed recommendation');
 }
 
 
-function createBarHorizontal( barData, labelData, width, height, barThickness, color ){
+function createBarHorizontal( barData, labelData, width, height, barThickness, color, title01, title02, title03 ){
+    
+        barSvg = d3.select( '#area1' ).append ('h2')
+	.text(title01);
+    barSvg = d3.select( '#area1' ).append ('h2')
+	.text(title02);
+    barSvg = d3.select( '#area1' ).append ('h2')
+	.text(title03);
+    
     var margin = 5;
     var barThicknessWithMargin = barThickness + 2*margin;
     var barSvg = d3.select( '#area1' ).append( 'svg' );
