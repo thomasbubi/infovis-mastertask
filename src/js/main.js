@@ -58,4 +58,5 @@ function createCharts( number ){
 
 }
 
+//initial view
 createCharts( 1 );

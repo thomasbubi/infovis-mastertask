@@ -67,11 +67,11 @@ function createDivergingBar( barData , width, height, yAxisOffsetY, barWidth) {
     barSvg.attr( 'width', width ).attr( 'height', height );
 
     var scale = d3.scaleLinear()
-                .domain( [ d3.min(barData), d3.max(barData) ] )
+                .domain( [ -70, 80 ] )
                 .range( [ -yAxisOffsetY, height - yAxisOffsetY ] );
 
     var scaleInverted = d3.scaleLinear()
-                .domain( [ d3.max(barData), d3.min( barData ) ] )
+                .domain( [ 80, -70 ] )
                 .range( [ -yAxisOffsetY, height - yAxisOffsetY ] );
 
     var zeroPos = yAxisOffsetY - ( Math.abs( scaleInverted(0) ) );
