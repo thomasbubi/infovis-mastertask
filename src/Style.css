@@ -79,3 +79,7 @@ h2 {
     text-align: center;
     font-size: 0.7em;
 }
+
+#local-relevance-buttons {
+    margin-top: 20px;
+}

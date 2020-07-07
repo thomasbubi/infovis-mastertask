@@ -5,7 +5,10 @@ function eraseCharts(){
     document.querySelector('#area4').innerHTML = '';
 }
 
-function createCharts( number ){
+function createCharts( number, localRelevanceNumber ){
+    
+    currentEvidenceSet = number;
+    
     createPie(
         '#area3',
         data['evidenceSet' + number].phase.map(function(d) { return d.value; }),
@@ -15,7 +18,7 @@ function createCharts( number ){
     );
 
     createDivergingBar( 
-        data['evidenceSet' + number].localRelevance[0].map(
+        data['evidenceSet' + number].localRelevance[localRelevanceNumber].map(
             function( d ) { 
                 return d.value;
             }
@@ -25,6 +28,14 @@ function createCharts( number ){
         100,
         20
     );
+    
+    if( data['evidenceSet' + number].localRelevance.length === 1 ){
+        document.querySelector('#local-relevance-buttons').style.display='none';
+    } else {
+        document.querySelector('#local-relevance-buttons').style.display='block';
+        document.querySelector('#local-relevance-buttons > button:first-child').innerHTML = data['evidenceSet' + number].localRelevanceLabels[0][0].value;
+        document.querySelector('#local-relevance-buttons > button:last-child').innerHTML = data['evidenceSet' + number].localRelevanceLabels[1][0].value;
+    }
 
     createBarHorizontal(
         data['evidenceSet' + number].basalBodyTemperature.map(function(d) { return d.value; }),
@@ -65,4 +76,4 @@ function createCharts( number ){
 }
 
 //initial view
-createCharts( 1 );
+createCharts( 1, 0 );

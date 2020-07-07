@@ -10,6 +10,8 @@ var colors = [
     '#E6E0F8'
 ]
 
+var currentEvidenceSet = -1;
+
 var data = {
     evidenceSet1: {
         basalBodyTemperature: [
@@ -42,12 +44,16 @@ var data = {
         ],
         localRelevance: [//is an array because some evidence sets have multiple assignments
             [
-                //{ label:'type', value: 'Basal Body Temperature' },
-                //{ label:'range', value: 'lower range' },
                 { label:'Menstruation', value: 18.63 },
                 { label:'Follicular', value: 15.08 },
                 { label:'Ovulation', value: 1.77 },
                 { label:'Luteal', value: -35.47 }
+            ]
+        ],
+        localRelevanceLabels: [
+            [
+                { label:'type', value: 'Basal Body Temperature' },
+                { label:'range', value: 'lower range' },
             ]
         ]
     },
@@ -81,12 +87,16 @@ var data = {
         ],
         localRelevance: [
             [
-                //{ label:'type', value: 'Basal Body Temperature' },
-                //{ label:'range', value: 'higher range' },
                 { label:'Menstruation', value: -33.86 },
                 { label:'Follicular', value: -27.41 },
                 { label:'Ovulation', value: -3.23 },
                 { label:'Luteal', value: 64.5 }
+            ]
+        ],
+        localRelevanceLabels: [
+            [
+                { label:'type', value: 'Basal Body Temperature' },
+                { label:'range', value: 'higher range' },
             ]
         ]
     },
@@ -120,20 +130,26 @@ var data = {
         ],
         localRelevance: [
             [
-                //{ label:'type', value: 'Basal Body Temperature' },
-                //{ label:'range', value: 'lower range' },
                 { label:'Menstruation', value: 0.13 },
                 { label:'Follicular', value: 14.7 },
                 { label:'Ovulation', value: 49 },
                 { label:'Luteal', value: -63.82 }
             ],
             [
-                //{ label:'type', value: 'Mucus' },
-                //{ label:'range', value: 's3' },
                 { label:'Menstruation', value: -52.29 },
                 { label:'Follicular', value: -19.47 },
                 { label:'Ovulation', value: 71.75 },
                 { label:'Luteal', value: 0.01 }
+            ]
+        ],
+        localRelevanceLabels: [
+            [
+                { label:'type', value: 'Basal Body Temperature' },
+                { label:'range', value: 'lower range' },
+            ],
+            [
+                { label:'type', value: 'Mucus' },
+                { label:'range', value: 'S3' },
             ]
         ]
     },
@@ -167,20 +183,26 @@ var data = {
         ],
         localRelevance: [
             [
-                //{ label:'type', value: 'Basal Body Temperature' },
-                //{ label:'range', value: 'lower range' },
                 { label:'Menstruation', value: 0 },
                 { label:'Follicular', value: 2.69 },
                 { label:'Ovulation', value: 0.17 },
                 { label:'Luteal', value: -2.86 }
             ],
             [
-                //{ label:'type', value: 'Mucus' },
-                //{ label:'range', value: 's4' },
                 { label:'Menstruation', value: -52.48 },
                 { label:'Follicular', value: 51.6 },
                 { label:'Ovulation', value: 0.88 },
                 { label:'Luteal', value: -0.01 }
+            ]
+        ],
+        localRelevanceLabels: [
+            [
+                { label:'type', value: 'Basal Body Temperature' },
+                { label:'range', value: 'lower range' },
+            ],
+            [
+                { label:'type', value: 'Mucus' },
+                { label:'range', value: 's4' },
             ]
         ]
     }
