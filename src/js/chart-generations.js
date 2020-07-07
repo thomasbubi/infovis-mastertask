@@ -4,11 +4,13 @@
  * @param {Array} pieLabels - Array of strings which label each part of the pie chart
  * @param {Number} width - width and height of the pie chart
  */
-function createPie( pieData, pieLabels, width ){
-    var diameter = width;
-    var pieSvg = d3.select( '#area3' ).append( 'svg' );
+function createPie( containerSelector, pieData, pieLabels, width, colorArray){
+    var height = width  - 25;
+    var pieSvg = d3.select( containerSelector ).append( 'svg' );
 
-    pieSvg.attr( 'width', diameter ).attr( 'height', diameter );
+    pieSvg.attr( 'width', width ).attr( 'height', height);
+
+    var diameter = Math.min(width, height);
 
     var pie = d3.pie();
     var arc = d3.arc()
@@ -24,11 +26,32 @@ function createPie( pieData, pieLabels, width ){
                 .enter()
                 .append( 'g' )
                 .attr( 'class', 'arc' )
-                .attr( 'transform', 'translate(' + diameter / 2 + ',' + diameter / 2 + ')' );
+                .attr( 'transform', 'translate(' + diameter / 2 + ',' + diameter / 2 + ')' )
+        .on('mouseover', mouseover)
+        .on('mousemove', mousemove)
+        .on('mouseout', mouseout);
 
-    var arrayAccessIsSafe = pieData.length == dataColors.length;
+    var tooltip = d3.select(containerSelector).append("div")
+        .attr("class", "toolTip")
+        .style("display", "none");
+    function mouseover() {
+        tooltip.style('display', 'inline');
+    }
+    function mousemove() {
+        var d = d3.select(this).data()[0]
+        tooltip
+            .html(d.data + '%')
+            .style('left', (d3.event.pageX + 20) + 'px')
+            .style('top', (d3.event.pageY - 12) + 'px');
+    }
+    function mouseout() {
+        tooltip.style('display', 'none');
+    }
 
-    if( arrayAccessIsSafe ){
+
+    var arrayAccessIsSafe = pieData.length == colorArray.length;
+
+    if( !arrayAccessIsSafe ){
         console.warn('Number of data values differ from number of colors. A random color will be generated for each part of the pie chart.')
     }
     
@@ -41,24 +64,51 @@ function createPie( pieData, pieLabels, width ){
     arcs.append( 'path' )
         .attr( 'fill', function( d, i ) {
             return arrayAccessIsSafe ?
-                dataColors[i] + 'ff' :
+                colorArray[i] + 'ff' :
                 '#' + Math.floor(Math.random()*16777215).toString(16);
         })
         .attr( 'd', arc );
+
 
     /*
      * generate labels
      * if label belongs to data that equals zero, it will not be displayed
      */
-    arcs.append( 'text' )
+    /*arcs.append( 'text' )
        .attr( 'transform', function( d ) { 
                 return 'translate(' + label.centroid( d ) + ')';
         })
        .text( function( d, i ){
             return i < pieLabels.length && i < pieData.length && pieData[i] > 0 ?
-                pieLabels[i] : '';
+                pieData[i] : '';
         } );
-    
+
+     */
+
+    var legend = pieSvg.selectAll(".legend")
+        .data(pie(pieData))
+        .enter().append("g")
+        .attr("transform", function(d, i) {
+            return "translate(" + (width-75) + "," + (i*15) + ")";
+        })
+        .attr("class", "legend");
+
+    legend.append("rect")
+        .attr("width", 10)
+        .attr("height", 10)
+        .attr("fill", function(d,i) {
+            return colorArray[i];
+        });
+
+    legend.append("text")
+        .text( function( d, i){
+            return pieLabels[i];
+        })
+        .style("font-size", 12)
+        .attr("y", 10)
+        .attr("x", 11);
+
+
 }
 
 function createDivergingBar( barData , width, height, yAxisOffsetY, barWidth) {
@@ -85,9 +135,9 @@ function createDivergingBar( barData , width, height, yAxisOffsetY, barWidth) {
 
     var xScale = d3.scaleBand().range( [0, width - 100] );
 
-    var marginSides = 5;
+    var marginSides = 3;
     var barSpace = ( barWidth + 2 * marginSides );
-    var initialOffset = 75
+    var initialOffset = 60;
 
     var tooltip = d3.select("#area4").append("div")
         .attr("class", "toolTip")
@@ -125,7 +175,7 @@ function createDivergingBar( barData , width, height, yAxisOffsetY, barWidth) {
 }
 
 
-function createBarHorizontal( barData, labelData, width, height, barThickness ){
+function createBarHorizontal( barData, labelData, width, height, barThickness, color ){
     var margin = 5;
     var barThicknessWithMargin = barThickness + 2*margin;
     var barSvg = d3.select( '#area1' ).append( 'svg' );
@@ -173,7 +223,7 @@ function createBarHorizontal( barData, labelData, width, height, barThickness ){
         .data( barData )
         .enter().append( 'rect' )
         .attr( 'class', 'bar' )
-        .attr( 'fill', 'green' )
+        .attr( 'fill', color )
         .attr( 'x', function( d, i ) {
             return 72;
         })

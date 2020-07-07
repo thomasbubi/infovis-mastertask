@@ -7,9 +7,11 @@ function eraseCharts(){
 
 function createCharts( number ){
     createPie(
+        '#area3',
         data['evidenceSet' + number].phase.map(function(d) { return d.value; }),
         data['evidenceSet' + number].phase.map(function(d) { return d.label; }),
-        400
+        400,
+        dataColors
     );
 
     createDivergingBar( 
@@ -25,19 +27,21 @@ function createCharts( number ){
     );
 
     createBarHorizontal(
-        data['evidenceSet' + number].mucus.map(function(d) { return d.value; }),
-        data['evidenceSet' + number].mucus.map(function(d) { return d.label; }),
-        300,
-        200,
-        20,
-    );
-
-    createBarHorizontal(
         data['evidenceSet' + number].basalBodyTemperature.map(function(d) { return d.value; }),
         data['evidenceSet' + number].basalBodyTemperature.map(function(d) { return d.label; }),
         300,
         140,
         20,
+        '#E1F5A9'
+    );
+
+    createBarHorizontal(
+        data['evidenceSet' + number].mucus.map(function(d) { return d.value; }),
+        data['evidenceSet' + number].mucus.map(function(d) { return d.label; }),
+        300,
+        200,
+        20,
+        '#E6E0F8'
     );
 
     createBarHorizontal(
@@ -46,14 +50,16 @@ function createCharts( number ){
         300,
         200,
         20,
+        '#F8E0E6',
     );
 
-    createBarVertical(
+
+    createPie(
+        '#area2',
         data['evidenceSet' + number].globalRelevance.map(function(d) { return d.value; }),
         data['evidenceSet' + number].globalRelevance.map(function(d) { return d.label; }),
-        200,
-        460,
-        20,
+        150,
+        colors
     );
 
 }
