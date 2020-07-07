@@ -1,51 +1,53 @@
-createPie(
-    data.evidenceSet1.phase.map(function(d) { return d.value; }),
-    data.evidenceSet1.phase.map(function(d) { return d.label; }),
-    400
-);
+function eraseCharts(){
+    document.querySelector('#area1').innerHTML = '';
+    document.querySelector('#area2').innerHTML = '';
+    document.querySelector('#area3').innerHTML = '';
+    document.querySelector('#area4').innerHTML = '';
+}
 
-createDivergingBar( 
-    data.evidenceSet1.localRelevance[0].map(
-        function( d ) { 
-            return d.value;
-        }
-    ),
-    250,
-    150,
-    100,
-    20
-);
+function createCharts( number ){
+    createPie(
+        data['evidenceSet' + number].phase.map(function(d) { return d.value; }),
+        data['evidenceSet' + number].phase.map(function(d) { return d.label; }),
+        400
+    );
 
-/*
-//maybe useful later
-data.evidenceSet1.localRelevance[0].filter(
-    function( elem ) { 
-        if(typeof elem.value == 'number') return elem.value;
-    }
-)
-*/
+    createDivergingBar( 
+        data['evidenceSet' + number].localRelevance[0].map(
+            function( d ) { 
+                return d.value;
+            }
+        ),
+        250,
+        150,
+        100,
+        20
+    );
 
-createBarHorizontal(
-    data.evidenceSet1.mucus.map(function(d) { return d.value; }),
-    data.evidenceSet1.mucus.map(function(d) { return d.label; }),
-    300,
-    200,
-    20,
-);
+    createBarHorizontal(
+        data['evidenceSet' + number].mucus.map(function(d) { return d.value; }),
+        data['evidenceSet' + number].mucus.map(function(d) { return d.label; }),
+        300,
+        200,
+        20,
+    );
 
-createBarHorizontal(
-    data.evidenceSet1.basalBodyTemperature.map(function(d) { return d.value; }),
-    data.evidenceSet1.basalBodyTemperature.map(function(d) { return d.label; }),
-    300,
-    140,
-    20,
-);
+    createBarHorizontal(
+        data['evidenceSet' + number].basalBodyTemperature.map(function(d) { return d.value; }),
+        data['evidenceSet' + number].basalBodyTemperature.map(function(d) { return d.label; }),
+        300,
+        140,
+        20,
+    );
 
-createBarHorizontal(
-    data.evidenceSet1.bleeding.map(function(d) { return d.value; }),
-    data.evidenceSet1.bleeding.map(function(d) { return d.label; }),
-    300,
-    200,
-    20,
-);
+    createBarHorizontal(
+        data['evidenceSet' + number].bleeding.map(function(d) { return d.value; }),
+        data['evidenceSet' + number].bleeding.map(function(d) { return d.label; }),
+        300,
+        200,
+        20,
+    );
 
+}
+
+createCharts( 1 );
