@@ -48,6 +48,14 @@ function createCharts( number ){
         20,
     );
 
+    createBarVertical(
+        data['evidenceSet' + number].globalRelevance.map(function(d) { return d.value; }),
+        data['evidenceSet' + number].globalRelevance.map(function(d) { return d.label; }),
+        200,
+        460,
+        20,
+    );
+
 }
 
 createCharts( 1 );

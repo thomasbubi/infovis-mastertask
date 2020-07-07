@@ -12,6 +12,10 @@ var data = {
             { label: 'higher Range', value: 0,},
             //{ label: 'globalRelevance', value: 100},
         ],
+        globalRelevance: [
+            { label: 'Basal Body Temperature', value: 100,},
+            { label: 'Mucus', value: 0,},
+        ],
         basalBodyTemperatureGlobalRelevance: 100,
         mucus: [
             { label: 's1', value: 57.5 },
@@ -46,6 +50,10 @@ var data = {
             { label: 'lower Range', value: 0,},
             { label: 'higher Range', value: 100,},
         ],
+        globalRelevance: [
+            { label: 'Basal Body Temperature', value: 100,},
+            { label: 'Mucus', value: 0,},
+        ],
         basalBodyTemperatureGlobalRelevance: 100,
         mucus: [
             { label: 's1', value: 89.8 },
@@ -79,6 +87,10 @@ var data = {
         basalBodyTemperature: [
             { label: 'lower Range', value: 100,},
             { label: 'higher Range', value: 0,},
+        ],
+        globalRelevance: [
+            { label: 'Basal Body Temperature', value: 45,},
+            { label: 'Mucus', value: 55,},
         ],
         basalBodyTemperatureGlobalRelevance: 45,
         mucus: [
@@ -121,6 +133,10 @@ var data = {
         basalBodyTemperature: [
             { label: 'lower Range', value: 100,},
             { label: 'higher Range', value: 0,},
+        ],
+        globalRelevance: [
+            { label: 'Basal Body Temperature', value: 20,},
+            { label: 'Mucus', value: 80,},
         ],
         basalBodyTemperatureGlobalRelevance: 20,
         mucus: [

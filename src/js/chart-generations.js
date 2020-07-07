@@ -98,7 +98,7 @@ function createDivergingBar( barData , width, height, yAxisOffsetY, barWidth) {
     function mousemove() {
         var d = d3.select(this).data()[0]
         tooltip
-            .html(d + '%')
+            .html(d)
             .style('left', (d3.event.pageX) + 'px')
             .style('top', (d3.event.pageY - 30) + 'px');
     }
@@ -197,11 +197,11 @@ function createBarVertical( barData, labelData, width, height, barThickness ){
     barSvg.attr( 'width', width ).attr( 'height', height );
     
     var scale = d3.scaleLinear()
-        .domain( [ 0, d3.max(barData) ] )
+        .domain( [ 0, 100 ] )
         .range( [ 0, height-50 ] );
     
     var scaleInverted = d3.scaleLinear()
-        .domain( [ d3.max(barData), 0 ] )
+        .domain( [ 100, 0 ] )
         .range( [ 0, height-50 ] );
     
     var labelScale = d3.scaleBand()
