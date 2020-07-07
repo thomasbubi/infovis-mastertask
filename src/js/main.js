@@ -43,7 +43,8 @@ function createCharts( number, localRelevanceNumber ){
         300,
         140,
         20,
-        '#E1F5A9'
+        '#E1F5A9',
+        title01 = 'Basal Body Temperature'
     );
 
     createBarHorizontal(
@@ -52,7 +53,8 @@ function createCharts( number, localRelevanceNumber ){
         300,
         200,
         20,
-        '#E6E0F8'
+        '#E6E0F8',
+        title02 = 'Mocus'
     );
 
     createBarHorizontal(
@@ -62,6 +64,7 @@ function createCharts( number, localRelevanceNumber ){
         200,
         20,
         '#F8E0E6',
+        title03 = 'Bleeding'
     );
 
 
