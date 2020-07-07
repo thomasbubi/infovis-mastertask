@@ -24,8 +24,8 @@ function createCharts( number, localRelevanceNumber ){
             }
         ),
         250,
-        150,
-        100,
+        400,
+        200,
         20
     );
     
