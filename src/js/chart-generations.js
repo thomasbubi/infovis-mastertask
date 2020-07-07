@@ -4,7 +4,7 @@
  * @param {Array} pieLabels - Array of strings which label each part of the pie chart
  * @param {Number} width - width and height of the pie chart
  */
-function createPie( containerSelector, pieData, pieLabels, width, colorArray){
+function createPie( containerSelector, pieData, pieLabels, width, colorArray, title04, title05){
     var height = width  - 25;
     var pieSvg = d3.select( containerSelector ).append( 'svg' );
 
@@ -107,7 +107,12 @@ function createPie( containerSelector, pieData, pieLabels, width, colorArray){
         .style("font-size", 12)
         .attr("y", 10)
         .attr("x", 11);
+	
+    d3.select('#area2').append('h2')
+	.text(title04)
 
+    d3.select('#area3').append('h2')
+	.text(title05)
 
 }
 
