@@ -191,8 +191,6 @@ function createBarHorizontal( barData, labelData, width, height, barThickness ){
 
 function createBarVertical( barData, labelData, width, height, barThickness ){
     
-    console.log(barData)
-    
     var margin = 5;
     var barThicknessWithMargin = barThickness + 2*margin;
     var barSvg = d3.select( '#area2' ).append( 'svg' );
