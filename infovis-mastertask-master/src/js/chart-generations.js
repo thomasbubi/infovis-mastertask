@@ -135,9 +135,9 @@ function createDivergingBar( barData , width, height, yAxisOffsetY, barWidth) {
 
     var xScale = d3.scaleBand().range( [0, width - 100] );
 
-    var marginSides = 5;
+    var marginSides = 3;
     var barSpace = ( barWidth + 2 * marginSides );
-    var initialOffset = 75
+    var initialOffset = 60;
 
     var tooltip = d3.select("#area4").append("div")
         .attr("class", "toolTip")
