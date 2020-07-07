@@ -54,7 +54,7 @@ function createCharts( number, localRelevanceNumber ){
         200,
         20,
         '#E6E0F8',
-        title01 = 'Mocus'
+        title01 = 'Mucus'
     );
 
     createBarHorizontal(
