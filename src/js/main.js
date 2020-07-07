@@ -14,7 +14,9 @@ function createCharts( number, localRelevanceNumber ){
         data['evidenceSet' + number].phase.map(function(d) { return d.value; }),
         data['evidenceSet' + number].phase.map(function(d) { return d.label; }),
         400,
-        dataColors
+        dataColors,
+        title04 = 'Global Relevants',
+        title05 = 'Phase'
     );
 
     createDivergingBar( 
