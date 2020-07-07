@@ -183,10 +183,10 @@ function createBarHorizontal( barData, labelData, width, height, barThickness, c
     
         barSvg = d3.select( '#area1' ).append ('h2')
 	.text(title01);
-    barSvg = d3.select( '#area1' ).append ('h2')
+    /*barSvg = d3.select( '#area1' ).append ('h2')
 	.text(title02);
     barSvg = d3.select( '#area1' ).append ('h2')
-	.text(title03);
+	.text(title03);*/
     
     var margin = 5;
     var barThicknessWithMargin = barThickness + 2*margin;

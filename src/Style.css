@@ -12,7 +12,7 @@ h1 {
 
 h2 {
     margin: 25px;
-    margin-bottom: 50px;
+    margin-bottom: 20px;
     font-size: 1em;
 }
 
@@ -55,7 +55,7 @@ h2 {
 }
 
 #area1 > svg {
-    margin-top: 40px
+    /*margin-top: 40px;*/
 }
 
 #area2 > svg {
@@ -67,7 +67,7 @@ h2 {
 }
 
 #area4 > svg {
-    margin-top: 120px;
+    margin-top: 20px;
 }
 
 
