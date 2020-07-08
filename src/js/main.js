@@ -13,9 +13,9 @@ function createCharts( number, localRelevanceNumber ){
         '#area3',
         data['evidenceSet' + number].phase.map(function(d) { return d.value; }),
         data['evidenceSet' + number].phase.map(function(d) { return d.label; }),
-        400,
+        450,
         dataColors,
-        title04 = 'Global Relevants',
+        title04 = 'Global Relevance',
         title05 = 'Phase'
     );
 
@@ -70,7 +70,7 @@ function createCharts( number, localRelevanceNumber ){
     );
 
 
-    createPie(
+    createDonat(
         '#area2',
         data['evidenceSet' + number].globalRelevance.map(function(d) { return d.value; }),
         data['evidenceSet' + number].globalRelevance.map(function(d) { return d.label; }),

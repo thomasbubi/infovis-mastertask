@@ -69,22 +69,6 @@ function createPie( containerSelector, pieData, pieLabels, width, colorArray, ti
         })
         .attr( 'd', arc );
 
-
-    /*
-     * generate labels
-     * if label belongs to data that equals zero, it will not be displayed
-     */
-    /*arcs.append( 'text' )
-       .attr( 'transform', function( d ) { 
-                return 'translate(' + label.centroid( d ) + ')';
-        })
-       .text( function( d, i ){
-            return i < pieLabels.length && i < pieData.length && pieData[i] > 0 ?
-                pieData[i] : '';
-        } );
-
-     */
-
     var legend = pieSvg.selectAll(".legend")
         .data(pie(pieData))
         .enter().append("g")
@@ -107,9 +91,6 @@ function createPie( containerSelector, pieData, pieLabels, width, colorArray, ti
         .style("font-size", 12)
         .attr("y", 10)
         .attr("x", 11);
-	
-    d3.select('#area2').append('h2')
-	.text(title04)
 
     d3.select('#area3').append('h2')
 	.text(title05)
@@ -184,7 +165,7 @@ function createDivergingBar( barData , width, height, yAxisOffsetY, barWidth) {
 }
 
 
-function createBarHorizontal( barData, labelData, width, height, barThickness, color, title01, title02, title03 ){
+function createBarHorizontal( barData, labelData, width, height, barThickness, color, title01){
     
         barSvg = d3.select( '#area1' ).append ('h2')
 	.text(title01);
@@ -303,3 +284,76 @@ function createBarVertical( barData, labelData, width, height, barThickness ){
         .attr( 'height', function( d, i ) { return scale( d ); });
 
 }
+
+function createDonat( containerSelector, pieData, pieLabels, width, colorArray){
+    var height = width  - 25;
+    var pieSvg = d3.select( containerSelector ).append( 'svg' );
+
+    pieSvg.attr( 'width', width ).attr( 'height', height);
+
+    var diameter = Math.min(width, height);
+
+    var pie = d3.pie();
+    var arc = d3.arc()
+        .innerRadius( diameter/10 )
+        .outerRadius( diameter/2 );
+
+    var label = d3.arc()
+        .innerRadius( diameter/10 )
+        .outerRadius( diameter/2 );
+
+    var arcs = pieSvg.selectAll( 'arc' )
+        .data( pie( pieData ) )
+        .enter()
+        .append( 'g' )
+        .attr( 'class', 'arc' )
+        .attr( 'transform', 'translate(' + diameter / 2 + ',' + diameter / 2 + ')' )
+        .on('mouseover', mouseover)
+        .on('mousemove', mousemove)
+        .on('mouseout', mouseout);
+
+    var tooltip = d3.select(containerSelector).append("div")
+        .attr("class", "toolTip")
+        .style("display", "none");
+    function mouseover() {
+        tooltip.style('display', 'inline');
+    }
+    function mousemove() {
+        var d = d3.select(this).data()[0]
+        tooltip
+            .html(d.data + '%')
+            .style('left', (d3.event.pageX + 20) + 'px')
+            .style('top', (d3.event.pageY - 12) + 'px');
+    }
+    function mouseout() {
+        tooltip.style('display', 'none');
+    }
+
+
+    var arrayAccessIsSafe = pieData.length == colorArray.length;
+
+    if( !arrayAccessIsSafe ){
+        console.warn('Number of data values differ from number of colors. A random color will be generated for each part of the pie chart.')
+    }
+
+    /*
+     * fill the arc with color
+     * if arrayAccessIsSafe isn't safe, generate random color
+     * code for random color generator from
+     * https://css-tricks.com/snippets/javascript/random-hex-color/
+     */
+    arcs.append( 'path' )
+        .attr( 'fill', function( d, i ) {
+            return arrayAccessIsSafe ?
+                colorArray[i] + 'ff' :
+                '#' + Math.floor(Math.random()*16777215).toString(16);
+        })
+        .attr( 'd', arc );
+
+
+    d3.select('#area2').append('h2')
+        .text(title04)
+
+
+}
+

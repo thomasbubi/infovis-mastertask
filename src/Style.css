@@ -6,19 +6,17 @@
 
 h1 {
     margin: 25px;
-    margin-bottom: 50px;
     font-size: 1em;
 }
 
 h2 {
-    margin: 25px;
-    margin-bottom: 20px;
+    margin: 10px;
     font-size: 1em;
 }
 
 .container {
     display: grid;
-    grid-template-columns: 400px 100px 500px 200px;
+    grid-template-columns: 400px 150px 550px 200px;
     grid-gap: 10px;
     font-family: 'Times New Roman';
     text-align: center;
@@ -54,16 +52,16 @@ h2 {
     grid-row-end: 2;
 }
 
-#area1 > svg {
-    /*margin-top: 40px;*/
-}
 
 #area2 > svg {
     margin-top: 240px;
+    margin-left: 15px
+
 }
 
 #area3 > svg {
     margin-top: 115px;
+    margin-left: 18px;
 }
 
 #area4 > svg {
